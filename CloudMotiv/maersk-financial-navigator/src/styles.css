@@ -1,0 +1,84 @@
+/* src/styles.css - fresh UI styling, attractive right dark panel */
+
+/* variables */
+:root {
+  --bg: #f2f6fb;
+  --card: #ffffff;
+  --panel-bg: #0f1720; /* dark analysis panel */
+  --panel-muted: #aab3bf;
+  --accent: #2b7df7;
+  --accent-2: #1ea7ff;
+  --muted: #68707a;
+}
+
+/* base */
+* { box-sizing: border-box; }
+html,body,#root { height: 100%; margin: 0; font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; background: var(--bg); color: #0b1220; }
+
+/* header */
+.topbar { display: flex; align-items: center; justify-content: space-between; padding: 18px 22px; background: linear-gradient(180deg,#fff,#fbfdff); border-bottom: 1px solid rgba(5,10,20,0.04); }
+.brand { font-weight: 700; font-size: 18px; }
+.status-line { color: var(--muted); font-size: 13px; }
+
+/* workspace layout */
+.workspace { display: flex; gap: 18px; padding: 18px; align-items: stretch; }
+.left-col { flex: 1 1 0; min-width: 700px; }
+.right-col { width: 380px; }
+
+/* viewer card */
+.viewer-card { background: var(--card); padding: 14px; border-radius: 10px; height: 78vh; overflow: auto; box-shadow: 0 10px 30px rgba(8,20,40,0.06); border: 1px solid rgba(10,20,40,0.03); }
+
+/* Pdf viewer internals (from PdfViewer.jsx) */
+.pf-viewer { width: 100%; }
+.pf-page-wrap { position: relative; margin: 12px auto; max-width: 100%; }
+.pf-canvas { display: block; width: 100%; height: auto; border-radius: 6px; box-shadow: 0 6px 12px rgba(8,16,48,0.04); }
+.pf-overlay { position: absolute; left: 0; top: 0; right: 0; bottom: 0; pointer-events: none; }
+.pf-highlight { pointer-events: auto; background: linear-gradient(180deg, rgba(255,241,179,0.95), rgba(255,240,153,0.85)); border-radius: 6px; box-shadow: 0 6px 18px rgba(6,12,24,0.06); outline: 1px solid rgba(0,0,0,0.03); }
+
+/* right analysis panel (dark) */
+.panel {
+  background: linear-gradient(180deg, rgba(7,11,15,0.98), rgba(13,17,23,0.98));
+  color: #f1f5f9;
+  padding: 20px;
+  border-radius: 12px;
+  height: 78vh;
+  box-shadow: 0 18px 50px rgba(2,6,23,0.45);
+  overflow: auto;
+}
+
+/* panel headings */
+.panel h3 { margin: 0 0 8px 0; color: #fff; font-size: 18px; }
+.panel-copy { color: var(--panel-muted); font-size: 13px; margin-bottom: 12px; }
+
+/* quick buttons */
+.quick-buttons { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 12px; }
+.btn { padding: 10px 12px; border-radius: 10px; border: none; cursor: pointer; font-weight: 700; }
+.btn.small { background: rgba(255,255,255,0.06); color: #e6eefb; border: 1px solid rgba(255,255,255,0.04); text-align: center; }
+.btn.primary { grid-column: 1 / -1; background: linear-gradient(90deg, var(--accent), var(--accent-2)); color: white; box-shadow: 0 8px 18px rgba(43,125,247,0.18); }
+
+/* search block */
+.search-block input { width: 100%; padding: 12px 14px; border-radius: 10px; border: none; background: rgba(255,255,255,0.04); color: #fff; outline: none; margin-bottom: 12px; }
+
+/* persistence row */
+.persist-row { display:flex; justify-content:space-between; align-items:center; color: var(--panel-muted); padding: 8px 0; border-top: 1px dashed rgba(255,255,255,0.03); margin-top: 8px; }
+
+/* matches */
+.matches { margin-top: 14px; }
+.matches h4 { margin: 0 0 8px 0; color: #fff; }
+.matches ol { padding-left: 16px; }
+.match-line { display:block; background: transparent; color: #e6eefb; width:100%; text-align:left; border:none; padding:8px 6px; border-radius:8px; cursor:pointer; }
+.match-line:hover { background: rgba(255,255,255,0.03); }
+
+/* doc info at bottom */
+.doc-info { margin-top: 18px; color: var(--panel-muted); font-size: 12px; }
+.path { margin-top: 6px; padding: 10px; background: rgba(255,255,255,0.03); border-radius: 8px; font-family: monospace; color: #cbd5e1; }
+
+/* small utilities */
+.muted { color: #9aa5b3; }
+
+/* responsive */
+@media (max-width: 1100px) {
+  .workspace { flex-direction: column; }
+  .left-col, .right-col { width: 100%; }
+  .right-col { height: auto; }
+}
