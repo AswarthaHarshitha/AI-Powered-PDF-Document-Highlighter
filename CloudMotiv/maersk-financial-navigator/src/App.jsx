@@ -1,5 +1,5 @@
 // src/App.jsx
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import PdfViewer from "./components/PdfViewer";
 import "./App.css";
 
@@ -29,7 +29,9 @@ export default function App() {
         arr.forEach((h) => {
           viewerRef.current.addHighlight(h.page, h.rect);
         });
-      } catch {}
+      } catch {
+        // ignore unreadable saved highlights
+      }
     }
   };
 

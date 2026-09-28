@@ -15,16 +15,11 @@ import React, {
  - exposes methods: getTextIndex(), scrollToPage(page), clear()
 */
 
-const makeId = (() => {
-  let idx = 1;
-  return () => `id-${Date.now()}-${idx++}`;
-})();
-
 const PdfViewer = forwardRef(({ url, onReady, onError }, ref) => {
   const containerRef = useRef(null);
   const pagesRef = useRef({}); // pageNumber -> page wrapper DOM
   const boxesRef = useRef({}); // pageNumber -> [{text,left,top,width,height}]
-  const [numPages, setNumPages] = useState(0);
+  const [, setNumPages] = useState(0);
   const [loading, setLoading] = useState(true);
 
   // fetch-first and render
